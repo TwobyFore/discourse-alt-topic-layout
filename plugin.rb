@@ -4,5 +4,5 @@
 # authors: Christopher Heald
 # url: https://github.com/OnceWas/discourse-alt-topic-layout
 
-register_asset "jsapp/templates/topic.hbs"
-register_asset "jsapp/templates/post.hbs"
+register_asset "javascripts/discourse/templates/topic.hbs"
+register_asset "javascripts/discourse/templates/post.hbs"
