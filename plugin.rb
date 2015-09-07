@@ -6,3 +6,4 @@
 
 register_asset "javascripts/discourse/templates/topic.hbs"
 register_asset "javascripts/discourse/templates/post.hbs"
+register_asset "stylesheets/alt_topic_layout.css"
