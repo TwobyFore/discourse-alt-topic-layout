@@ -3,7 +3,12 @@
 # version: 1.0
 # authors: Christopher Heald
 # url: https://github.com/OnceWas/discourse-alt-topic-layout
-
-register_asset "javascripts/discourse/templates/topic.hbs"
-register_asset "javascripts/discourse/templates/post.hbs"
 register_asset "stylesheets/alt_topic_layout.css"
+
+Discourse::Application.routes.prepend do
+  get "/custom_user_fields" => "users#custom_user_fields"
+end
+
+after_initialize do
+  load File.expand_path("../controllers/extended_users_controller.rb", __FILE__)
+end

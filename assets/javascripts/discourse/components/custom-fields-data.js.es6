@@ -10,10 +10,14 @@ export default Ember.Component.extend({
     });
 
     var username = this.get('post').username;
-
-    Discourse.User.findByUsername(username).then(function(res) {
-      var real_state_brokerage = res.user_fields[2];
-      var location = res.user_fields[11];
+    $.ajax({
+      url: '/custom_user_fields',
+      data: { user_name: username }
+    }).then(function(res) {
+      var real_state_brokerage = res.real_state_brokerage;
+      var state                = res.province_state;
+      var city                 = res.city;
+      var loc                  = new Array();
 
       if(real_state_brokerage) {
         custom_fields.set("real_state_brokerage", real_state_brokerage);
@@ -21,13 +25,15 @@ export default Ember.Component.extend({
         custom_fields.set("real_state_brokerage", "");
       }
 
-      if(location) {
-        custom_fields.set("location", location);
-      } else {
-        custom_fields.set("location", "");
+      if(city) {
+        loc.push(city)
       }
-    });
 
+      if(state) {
+        loc.push(state)
+      }
+      custom_fields.set("location", loc.join(" / "));
+    });
     return custom_fields;
   }.property('custom_fields')
 });
