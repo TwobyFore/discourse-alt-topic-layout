@@ -32,7 +32,7 @@ export default Ember.Component.extend({
       if(state) {
         loc.push(state)
       }
-      custom_fields.set("location", loc.join(" / "));
+      custom_fields.set("location", loc.join(", "));
     });
     return custom_fields;
   }.property('custom_fields')
