@@ -20,6 +20,9 @@ export default Ember.Component.extend({
       var loc               = new Array();
 
       if(primary_brokerage) {
+        var regex = new RegExp(', [A-z .0-9]+, [A-Z]{2}$');
+        primary_brokerage = primary_brokerage.replace(regex, '');
+
         custom_fields.set("primary_brokerage", primary_brokerage);
       } else {
         custom_fields.set("primary_brokerage", "");
